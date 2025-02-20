@@ -58,7 +58,16 @@ cv.glm(data, mod.glm, K = n)$delta[1]
 
 
 
+library(stargazer)
+library(GGally)
 
+
+ggcoef(mod.glm, exponentiate = FALSE) + 
+  theme_minimal() +
+  ggtitle("Model Coefficients Plot")
+
+stargazer(mod.glm, type = "html", out = "model_summary.html")
+browseURL("model_summary.html")
 
 
 
