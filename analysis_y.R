@@ -9,7 +9,6 @@ y <- rpois(1000, mu)
 data <- data.frame(x = x, y = y)
 #####
 
-
 # Detailed analysis ####
 library(fitdistrplus)
 library(performance)
@@ -56,9 +55,9 @@ mod.lm2 <- glm(y ~ x, data = data)
 cv.glm(data, mod.lm2, K = n)$delta[1]
 cv.glm(data, mod.glm, K = n)$delta[1]
 
-
-
-
-
-
+type <- c()
+for(i in 1 : length(y)){
+  ifelse(y[i] < mean(y), type[i] <- "small", type[i]<- "big")
+}
+table(type)
 
