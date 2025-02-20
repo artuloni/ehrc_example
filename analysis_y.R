@@ -10,5 +10,8 @@ y <- rpois(n, lambda)
 data <- data.frame(x = x, y = y)
 #####
 
-mod.lm <- lm(y ~ scale(x), data = data)
-summary(mod.lm)
+type <- c()
+for(i in 1 : length(y)){
+  ifelse(y[i] < mean(y), type[i] <- "small", type[i]<- "big")
+}
+table(type)
